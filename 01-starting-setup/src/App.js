@@ -1,4 +1,5 @@
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
     const expenses = [
@@ -28,9 +29,14 @@ function App() {
         },
     ];
 
+    function addExpenseHandler(newExpense) {
+        expenses.push(newExpense);
+        console.log(expenses);
+    }
+
     return (
         <div>
-            <div>Let's get started!</div>
+            <NewExpense onAddExpense = {addExpenseHandler}/>
             <Expenses items={expenses}/>
         </div>
     );
