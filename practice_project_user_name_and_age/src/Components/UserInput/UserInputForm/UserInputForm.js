@@ -3,6 +3,7 @@ import styles from './UserInputForm.module.css';
 import Button from "../../UI/Button/Button";
 import ModalInfo from "../../UI/ModalInfo/ModalInfo";
 import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
+import Card from "../../UI/Card/Card";
 
 function UserInputForm(props) {
     const [enteredUserName, setUserName] = useState('');
@@ -17,8 +18,9 @@ function UserInputForm(props) {
         setAge(event.target.value);
     }
 
-    function submitHandler() {
+    function submitHandler(event) {
         console.log('Form submitted.');
+        event.preventDefault();
 
         if (!validateInput()) return;
 
@@ -52,36 +54,38 @@ function UserInputForm(props) {
 
         setErrorContent((
             <ModalInfo onClick={modalClickHandler}>
-                <ErrorMessage title = {'Invalid Input'} message = {errorMessage}/>
+                <ErrorMessage title={'Invalid Input'} message={errorMessage}/>
             </ModalInfo>));
 
         return false;
     }
 
     return (
-        <div>
-            {errorContent}
-            <div className={styles.wrapper}>
-                <label className={styles.label}>User Name</label>
-                <input type='text'
-                       onChange={userNameChangeHandler}
-                       value={enteredUserName}
-                       placeholder='Enter User Name'
-                       className={styles.input}
-                />
-            </div>
-            <div className={styles.wrapper}>
-                <label className={styles.label}>Age</label>
-                <input type='number'
-                       onChange={ageChangedHandler}
-                       value={enteredAge}
-                       className={styles.input}
-                />
-            </div>
-            <div className={styles.wrapper}>
-                <Button onClick={submitHandler}>Add User</Button>
-            </div>
-        </div>
+        <Card>
+            <form onSubmit={submitHandler}>
+                {errorContent}
+                <div className={styles.wrapper}>
+                    <label className={styles.label} htmlFor="username">User Name</label>
+                    <input type='text'
+                           onChange={userNameChangeHandler}
+                           value={enteredUserName}
+                           placeholder='Enter User Name'
+                           className={styles.input}
+                           id="username"
+                    />
+                    <label className={styles.label} htmlFor="age">Age</label>
+                    <input type='number'
+                           onChange={ageChangedHandler}
+                           value={enteredAge}
+                           className={styles.input}
+                           id="age"
+                    />
+                </div>
+                <div className={styles.wrapper}>
+                    <Button type={"submit"}>Add User</Button>
+                </div>
+            </form>
+        </Card>
 
     )
 }

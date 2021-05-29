@@ -1,4 +1,3 @@
-import Card from "./Components/UI/Card/Card";
 import UserInputForm from "./Components/UserInput/UserInputForm/UserInputForm";
 import UserList from "./Components/UserList/UserList/UserList";
 import {useState} from "react";
@@ -20,12 +19,8 @@ function App() {
 
     return (
         <div>
-            <Card>
-                <UserInputForm onUserAdded={onUserAddedHandler}/>
-            </Card>
-            <Card>
-                <UserList users = {users}/>
-            </Card>
+            <UserInputForm onUserAdded={onUserAddedHandler}/>
+            <UserList users={users}/>
         </div>
     );
 }

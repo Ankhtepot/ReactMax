@@ -2,7 +2,7 @@ import styles from './Card.module.css';
 
 function Card(props) {
     return (
-        <div className={styles.wrapper}>
+        <div className={`${styles.card} ${props.className}`}>
             {props.children}
         </div>
     )
