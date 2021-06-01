@@ -1,6 +1,6 @@
 import UserItem from "../UserItem/UserItem";
-import styles from './UserList.module.css';
 import Card from "../../UI/Card/Card";
+import styles from './UserList.module.css';
 
 function UserList(props) {
     return (

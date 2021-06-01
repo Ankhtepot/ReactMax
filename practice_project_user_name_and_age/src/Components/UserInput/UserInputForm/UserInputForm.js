@@ -1,21 +1,18 @@
 import {useState} from "react";
 import styles from './UserInputForm.module.css';
 import Button from "../../UI/Button/Button";
-import ModalInfo from "../../UI/ModalInfo/ModalInfo";
-import ErrorMessage from "../../UI/ErrorMessage/ErrorMessage";
 import Card from "../../UI/Card/Card";
 
 function UserInputForm(props) {
-    const [enteredUserName, setUserName] = useState('');
-    const [enteredAge, setAge] = useState(1);
-    const [errorContent, setErrorContent] = useState();
+    const [enteredUserName, setEnteredUserName] = useState('');
+    const [enteredAge, setEnteredAge] = useState(1);
 
     function userNameChangeHandler(event) {
-        setUserName(event.target.value);
+        setEnteredUserName(event.target.value);
     }
 
     function ageChangedHandler(event) {
-        setAge(event.target.value);
+        setEnteredAge(event.target.value);
     }
 
     function submitHandler(event) {
@@ -25,45 +22,28 @@ function UserInputForm(props) {
         if (!validateInput()) return;
 
         props.onUserAdded({userName: enteredUserName, age: enteredAge})
-        setUserName('');
-        setAge(1);
-    }
-
-    function modalClickHandler() {
-        setErrorContent(<div/>);
+        setEnteredUserName('');
+        setEnteredAge(1);
     }
 
     function validateInput() {
-        let errorMessage = '';
-
-        if (enteredUserName === '') {
-            errorMessage = 'Please, enter valid user name.';
-        } else if (enteredAge <= 0) {
-            errorMessage = 'Please enter a valid age (> 0).';
+        if (enteredUserName.trim().length === 0) {
+            return throwError( 'Please, enter valid user name.');
+        } else if (+enteredAge <= 0) {
+            return throwError('Please enter a valid age (> 0).');
         }
 
-        return setError(errorMessage);
+        return true;
     }
 
-    function setError(errorMessage) {
-        const doShowError = errorMessage !== '';
-        if (!doShowError) {
-            setErrorContent(<div/>);
-            return true;
-        }
-
-        setErrorContent((
-            <ModalInfo onClick={modalClickHandler}>
-                <ErrorMessage title={'Invalid Input'} message={errorMessage}/>
-            </ModalInfo>));
-
+    function throwError(errorMessage) {
+        props.onError('Invalid Input', errorMessage);
         return false;
     }
 
     return (
         <Card>
             <form onSubmit={submitHandler}>
-                {errorContent}
                 <div className={styles.wrapper}>
                     <label className={styles.label} htmlFor="username">User Name</label>
                     <input type='text'

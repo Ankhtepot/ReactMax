@@ -1,8 +1,11 @@
-import './Button.module.css';
+import styles from './Button.module.css';
 
 function Button(props) {
     return (
-        <button onClick={props.onClick} type={props.type}>
+        <button className={styles.Button}
+                onClick={props.onClick}
+                type={props.type || 'button'}
+        >
             {props.children}
         </button>
     )

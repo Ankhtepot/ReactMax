@@ -1,4 +1,4 @@
-button {
+.Button {
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
@@ -9,19 +9,19 @@ button {
     margin-right: 1rem;
 }
 
-button:hover,
-button:active {
+.Button:hover,
+.Button:active {
     background-color: #510674;
     border-color: #510674;
 }
 
-button.alternative {
+.Button.alternative {
     color: #220131;
     border-color: transparent;
     background-color: transparent;
 }
 
-button.alternative:hover,
-button.alternative:active {
+.Button.alternative:hover,
+.Button.alternative:active {
     background-color: #ddb3f8;
 }
