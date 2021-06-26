@@ -1,9 +1,37 @@
 import classes from './HeaderCartButton.module.css';
 import CartIcon from "../../Cart/CartIcon";
+import {useContext, useEffect, useState} from "react";
+import {CartContext} from "../../../store/cart-context";
 
 function HeaderCartButton(props) {
+    const [buttonIsHighlighted, setButtonIsHighlighted] = useState(false);
+    const cartContext = useContext(CartContext);
+
+    const numberOfCartItems = cartContext.items.reduce((curr, item) => {
+        return curr + item.amount;
+    }, 0);
+
+    const btnClasses = `${classes.button} ${buttonIsHighlighted && classes.bump}`;
+
+    useEffect(() => {
+        if (cartContext.items.length === 0) {
+            return;
+        }
+
+        setButtonIsHighlighted(true);
+
+        const timer = setTimeout(() => {
+            setButtonIsHighlighted(false);
+        }, 300);
+
+        return () => {
+            clearImmediate(timer);
+        }
+    }, [cartContext.items]);
+
+
     return (
-        <button className={classes.button}
+        <button className={btnClasses}
                 onClick={props.onClick}
         >
             <span className={classes.icon}>
@@ -13,7 +41,7 @@ function HeaderCartButton(props) {
                 Your Cart
             </span>
             <span className={classes.badge}>
-                3
+                {numberOfCartItems}
             </span>
         </button>
     )
