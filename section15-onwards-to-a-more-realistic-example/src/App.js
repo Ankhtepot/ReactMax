@@ -9,27 +9,24 @@ function App() {
     // const [error, setError] = useState(null);
     const [tasks, setTasks] = useState([]);
 
-    const transformTasks = tasksObj => {
-        const loadedTasks = [];
-
-        // tasksObj.keys.forEach(key => {
-        //     loadedTasks.push({id: key, text: tasksObj[key].text});
-        // });
-
-        for (const taskKey in tasksObj) {
-            loadedTasks.push({id: taskKey, text: tasksObj[taskKey].text});
-        }
-
-        setTasks(loadedTasks);
-    }
-
-    const {isLoading, error, sendRequest: fetchTasks} = useHttp(
-        {url: 'https://react-http-65df3-default-rtdb.europe-west1.firebasedatabase.app/tasks.json'},
-        transformTasks);
+    const {isLoading, error, sendRequest: fetchTasks} = useHttp();
 
     useEffect(() => {
-        fetchTasks();
-    }, []);
+        const transformTasks = tasksObj => {
+            const loadedTasks = [];
+
+            Object.keys(tasksObj).forEach(key => {
+                loadedTasks.push({id: key, text: tasksObj[key].text});
+            });
+
+            setTasks(loadedTasks);
+        };
+
+        fetchTasks(
+            {url: 'https://react-http-65df3-default-rtdb.europe-west1.firebasedatabase.app/tasks.json'},
+            transformTasks
+        );
+    }, [fetchTasks]);
 
     const taskAddHandler = (task) => {
         setTasks((prevTasks) => prevTasks.concat(task));
