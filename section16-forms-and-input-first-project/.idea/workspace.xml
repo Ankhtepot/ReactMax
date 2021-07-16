@@ -2,28 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="455af824-d056-42b2-925a-7d62c2cc08fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/section16-forms-and-input-first-project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/BasicForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SimpleInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section15-onwards-to-a-more-realistic-example/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../section15-onwards-to-a-more-realistic-example/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section15-onwards-to-a-more-realistic-example/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../section15-onwards-to-a-more-realistic-example/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section15-onwards-to-a-more-realistic-example/src/components/NewTask/NewTask.js" beforeDir="false" afterPath="$PROJECT_DIR$/../section15-onwards-to-a-more-realistic-example/src/components/NewTask/NewTask.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../section15-onwards-to-a-more-realistic-example/src/hooks/use-http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../section15-onwards-to-a-more-realistic-example/src/hooks/use-http.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/use-input.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/use-inputReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BasicForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BasicForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SimpleInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SimpleInput.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +18,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="minikube" />
+    <option name="namespace" value="default" />
   </component>
   <component name="ProjectId" id="1vFCYyKZFZi5iMKvVDwZ3lfaNxc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -43,9 +33,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/hooks" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Courses\ReactMax\section16-forms-and-input-first-project\src\hooks" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -55,11 +51,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1626148500779</updated>
-      <workItem from="1626148502014" duration="3053000" />
+      <workItem from="1626148502014" duration="3434000" />
+      <workItem from="1626320036239" duration="6584000" />
+      <workItem from="1626406264839" duration="7748000" />
     </task>
+    <task id="LOCAL-00001" summary="Up to lesson 201.">
+      <created>1626153831907</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1626153831908</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Up to lesson 201." />
+    <option name="LAST_COMMIT_MESSAGE" value="Up to lesson 201." />
   </component>
 </project>
