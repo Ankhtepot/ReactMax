@@ -4,17 +4,20 @@ const initialState = {
     items: [],
     itemsTotal: 0,
     itemsAmount: 0,
-    isShown: false
+    isShown: false,
+    changed: false
 }
-
-// function countItemsAmount(items) {
-//     return items.reduce((curr, prev) => prev = curr.price * curr.quantity, 0);
-// }
 
 const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
+        replaceCart(state, action) {
+            const cart = action.payload;
+            state.itemsAmount = cart.itemsAmount;
+            state.items = cart.items;
+            state.itemsTotal = cart.itemsTotal;
+        },
         toggleShow(state) {
             state.isShown = !state.isShown
         },
@@ -39,6 +42,7 @@ const cartSlice = createSlice({
 
             state.itemsTotal += 1;
             state.itemsAmount += actionItem.price;
+            state.changed = true;
         },
         removeFromCart(state, action) {
             const actionItem = action.payload;
@@ -57,10 +61,11 @@ const cartSlice = createSlice({
 
                 state.itemsTotal -= 1;
                 state.itemsAmount -= foundItem.price;
+                state.changed = true;
             }
         }
     }
-})
+});
 
 export const cartActions = cartSlice.actions;
 
