@@ -1,34 +1,49 @@
 // import classes from './QuoteDetail.module.css';
-import {Route, useParams} from 'react-router-dom';
+import {Link, Route, useParams, useRouteMatch} from 'react-router-dom';
 import Comments from '../components/comments/Comments';
 import HighlightedQuote from '../components/quotes/HighlightedQuote';
-
-const DUMMY_QUOTES = [
-    {
-        id: 'q1',
-        author: 'Petr',
-        text: 'Learning React is fun!'
-    },
-    {
-        id: 'q2',
-        author: 'Petrklic',
-        text: 'Learning React is great!'
-    }
-];
+import useHttp from '../hooks/use-http';
+import {getSingleQuote} from '../lib/api';
+import {useEffect} from 'react';
+import LoadingSpinner from '../components/UI/LoadingSpinner';
 
 function QuoteDetail(props) {
+    const match = useRouteMatch();
     const params = useParams();
 
-    const quote = DUMMY_QUOTES.find(q => q.id === params.quoteId);
+    const { quoteId } = params;
 
-    if (!quote) {
+    const {sendRequest, status, data: loadedQuote, error} = useHttp(getSingleQuote, true);
+
+    useEffect(() => {
+        sendRequest( quoteId);
+    }, [sendRequest, quoteId])
+
+    console.log(match);
+
+    if (status === 'pending') {
+        return <div className='centered'>
+            <LoadingSpinner />
+        </div>;
+    }
+
+    if (error) {
+        return <p className='centered'>{error}</p>;
+    }
+
+    if (!loadedQuote.text) {
         return <p>No Quote found!</p>
     }
 
     return (
         <>
-            <HighlightedQuote text={quote.text} author={quote.author}/>
-            <Route path="/quotes/:quoteId/comments" component={Comments}/>
+            <HighlightedQuote text={loadedQuote.text} author={loadedQuote.author}/>
+            <Route path={match.path} exact >
+                <div className="centered">
+                    <Link className="btn--flat" to={`${match.url}/comments`}>Load Comment</Link>
+                </div>
+            </Route>
+            <Route path={`${match.path}/comments`} component={Comments}/>
         </>
     );
 }
