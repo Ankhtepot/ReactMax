@@ -1,28 +1,41 @@
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
+import {useAuth} from '../../store/auth-context';
 
 const MainNavigation = () => {
-  return (
-    <header className={classes.header}>
-      <Link to='/'>
-        <div className={classes.logo}>React Auth</div>
-      </Link>
-      <nav>
-        <ul>
-          <li>
-            <Link to='/auth'>Login</Link>
-          </li>
-          <li>
-            <Link to='/profile'>Profile</Link>
-          </li>
-          <li>
-            <button>Logout</button>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  );
+    const authContext = useAuth();
+
+    const isLoggedIn = authContext.isLoggedIn;
+
+    const logoutHandler = () => {
+        authContext.logout();
+        // optional: redirect the user
+    }
+
+    return (
+        <header className={classes.header}>
+            <Link to="/">
+                <div className={classes.logo}>React Auth</div>
+            </Link>
+            <nav>
+                <ul>
+                    {!isLoggedIn &&
+                    <li>
+                        <Link to="/auth">Login</Link>
+                    </li>}
+                    {isLoggedIn &&
+                    <li>
+                        <Link to="/profile">Profile</Link>
+                    </li>}
+                    {isLoggedIn &&
+                    <li>
+                        <button onClick={logoutHandler}>Logout</button>
+                    </li>}
+                </ul>
+            </nav>
+        </header>
+    );
 };
 
 export default MainNavigation;
