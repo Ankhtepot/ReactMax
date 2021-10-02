@@ -1,18 +1,17 @@
 import React from 'react';
 import './App.css';
 import Todos from "./components/Todos";
-import Todo from "./models/todo";
-
-const todos: Todo[] = [
-    new Todo('Learning React'),
-    new Todo('Learning Typescript'),
-]
+import NewTodo from "./components/NewTodo";
+import TodosContextProvider from "./store/todo-context";
 
 function App() {
     return (
-        <div className="App">
-            <Todos todos={todos}/>
-        </div>
+        <TodosContextProvider>
+            <div className="App">
+                <NewTodo/>
+                <Todos/>
+            </div>
+        </TodosContextProvider>
     );
 }
 
